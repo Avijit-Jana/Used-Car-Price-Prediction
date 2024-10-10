@@ -8,7 +8,7 @@
 - [🛠️ Approach](#approach)
 - [📧 Additional Information](#additional-information)
 
-## 🤓 Project Description 
+## Project Description 
 
 ### <u>Objective:</u> 
 
@@ -19,7 +19,7 @@ seamlessly.
 
 We have historical data on used car prices from CarDekho, including various features such as make, model, year, fuel type, transmission type, and other relevant attributes from different cities. Your task as a data scientist is to develop a machine learning model that can accurately predict the prices of used cars based on these features. The model should be integrated into a Streamlit-based web application to allow users to input car details and receive an estimated price instantly.
 
-## 🛠️ Approach:
+## Approach:
 
 This is a step-by-step approach to understand the project :
 1) [Data Processing](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Data%20Preprocessing%20%26%20Cleaning)
@@ -29,4 +29,4 @@ This is a step-by-step approach to understand the project :
 5) [Optimization]()
 6) [Deployment]()
 
-## 📧 Additional Information
+## Additional Information
