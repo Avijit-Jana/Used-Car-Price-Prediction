@@ -24,9 +24,7 @@ We have historical data on used car prices from CarDekho, including various feat
 This is a step-by-step approach to understand the project :
 1) [Data Processing](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Data%20Preprocessing%20%26%20Cleaning)
 2) [Exploratory Data Analysis (EDA)]()
-3) [Model Development]()
-4) [Model Evaluation]()
-5) [Optimization]()
+3) [Model](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Model)
 6) [Deployment]()
 
 ## Additional Information
