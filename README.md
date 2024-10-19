@@ -1,12 +1,19 @@
 <h1 align="center"> Used-Car-Price-Prediction</h1>
 
+![GitHub repo size](https://img.shields.io/github/repo-size/Avijit-Jana/Used-Car-Price-Prediction?style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/Avijit-Jana/Used-Car-Price-Prediction?style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/Avijit-Jana/Used-Car-Price-Prediction?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/Avijit-Jana/Used-Car-Price-Prediction?color=red&style=plastic)
+
 
 ## 📝 Table of Contents
 
-- [🤓 Project Description](#project-description)
-- [💻 Dataset Overview](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/DataSets)
-- [🛠️ Approach](#approach)
-- [📧 Additional Information](#additional-information)
+- [📝 Table of Contents](#-table-of-contents)
+- [Project Description](#project-description)
+  - [Objective:](#objective)
+  - [Project Scope:](#project-scope)
+- [Approach:](#approach)
+- [Additional Information](#additional-information)
 
 ## Project Description 
 
@@ -28,3 +35,4 @@ This is a step-by-step approach to understand the project :
 6) [Deployment]()
 
 ## Additional Information
+
