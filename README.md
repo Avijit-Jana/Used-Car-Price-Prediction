@@ -1,4 +1,4 @@
-<h1 align="center"> Used-Car-Price-Prediction</h1>
+<h1 align="center">🚗Used-Car-Price-Prediction🚗</h1>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Avijit-Jana/Used-Car-Price-Prediction?style=plastic)
 ![GitHub language count](https://img.shields.io/github/languages/count/Avijit-Jana/Used-Car-Price-Prediction?style=plastic)
@@ -8,12 +8,11 @@
 
 ## 📝 Table of Contents
 
-- [📝 Table of Contents](#-table-of-contents)
-- [Project Description](#project-description)
+- [📖Project Description](#project-description)
   - [Objective:](#objective)
   - [Project Scope:](#project-scope)
-- [Approach:](#approach)
-- [Additional Information](#additional-information)
+- [🚩Approach:](#approach)
+- [🎈Additional Information](#additional-information)
 
 ## Project Description 
 
@@ -30,9 +29,9 @@ We have historical data on used car prices from CarDekho, including various feat
 
 This is a step-by-step approach to understand the project :
 1) [Data Processing](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Data%20Preprocessing%20%26%20Cleaning)
-2) [Exploratory Data Analysis (EDA)]()
+2) [Exploratory Data Analysis (EDA)](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Exploratory%20Data%20Analysis%20(EDA))
 3) [Model](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Model)
-6) [Deployment]()
+6) [Deployment](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Output)
 
 ## Additional Information
 
