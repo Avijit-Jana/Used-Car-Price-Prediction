@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 def load_model():
     file = '../Model/model.pkl'
     with open(file, 'rb') as f:
-        model1 = pickle.load(f)
+        model1 = pickle.load(f) 
     return model1
 
 # Function to predict using the Random Forest model
@@ -49,9 +49,9 @@ def main():
     # Sidebar
     with st.sidebar:
         st.header('About:')
-        st.write('This is a web app to predict the resale price of a car using a Random Forest model.')
+        st.write('This project leverages a machine learning model to predict the resale value of a car, offering users insights based on various vehicle features. By building a Streamlit app, we created an intuitive and interactive interface, allowing users to input details like model year, mileage, and other car specifics to receive an estimated resale price.')
+        st.markdown('## -Developed by Avijit Jana')
         st.image('../Output/car.png', width=250)
-        st.write('# Resale Price of the Car:')
 
     # Set the title of the web app
     st.header(':car: :orange[_CarDekho_] Resale Car Price Prediction :car:', divider="red")
@@ -130,9 +130,7 @@ def main():
     # Button without inline HTML
     if st.button("# Predict Price"):
         prediction = predict_model(features,df)
-        with st.sidebar:
-            st.code(f"₹ {prediction:,.2f}")
-
+        st.markdown(f'## Resale Price of the Car: ₹ `{prediction:.2f}`')
 
 if __name__ == '__main__':
     main()
