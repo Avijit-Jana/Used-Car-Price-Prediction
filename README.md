@@ -6,15 +6,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/Avijit-Jana/Used-Car-Price-Prediction?color=red&style=plastic)
 
 
-## 📝 Table of Contents
-
-- [📖Project Description](#project-description)
-  - [Objective:](#objective)
-  - [Project Scope:](#project-scope)
-- [🚩Approach:](#approach)
-- [🎈Additional Information](#additional-information)
-
-## Project Description 
+## 📖Project Description 
 
 ### <u>Objective:</u> 
 
@@ -33,5 +25,10 @@ This is a step-by-step approach to understand the project :
 3) [Model](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Model)
 6) [Deployment](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Output)
 
-## Additional Information
+## Required libraries
+**Use this code to install this libraries:**
+```Bash
+pip install pandas numpy streamlit sklearn scipy ast pickle matplotlib seaborn
+```
 
+<h3 align="right">Developed By - <u>Avijit Jana</u></h3>
