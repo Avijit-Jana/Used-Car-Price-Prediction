@@ -20,10 +20,11 @@ We have historical data on used car prices from CarDekho, including various feat
 ## Approach:
 
 This is a step-by-step approach to understand the project :
-1) [Data Processing](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Data%20Preprocessing%20%26%20Cleaning)
+1) [Data Preprocessing & Cleaning](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Data%20Preprocessing%20%26%20Cleaning)
 2) [Exploratory Data Analysis (EDA)](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Exploratory%20Data%20Analysis%20(EDA))
-3) [Model](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Model)
-6) [Deployment](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Output)
+3) [Model Development](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Model)
+4) [Deployment](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/Output)
+5) [Datasets](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/DataSets)
 
 ## Required libraries
 **Use this code to install this libraries:**
@@ -31,4 +32,6 @@ This is a step-by-step approach to understand the project :
 pip install pandas numpy streamlit sklearn scipy ast pickle matplotlib seaborn
 ```
 
-<h3 align="right">Developed By - <u>Avijit Jana</u></h3>
+<h3 align="right" style="
+    background: linear-gradient(135deg, #89f7fe, #66a6ff); background: linear-gradient(135deg, #ff9a9e, #ff6a6a); padding: 10px; -webkit-background-clip: text;    -webkit-text-fill-color: transparent;"> Developed By - <span style="background: linear-gradient(135deg, #ffecd2, #fcb69f); color: transparent; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Avijit Jana</span>
+</h3>
