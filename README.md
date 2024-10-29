@@ -32,6 +32,6 @@ This is a step-by-step approach to understand the project :
 pip install pandas numpy streamlit sklearn scipy ast pickle matplotlib seaborn
 ```
 
-<h3 align="right" style="
-    background: linear-gradient(135deg, #89f7fe, #66a6ff); background: linear-gradient(135deg, #ff9a9e, #ff6a6a); padding: 10px; -webkit-background-clip: text;    -webkit-text-fill-color: transparent;"> Developed By - <span style="background: linear-gradient(135deg, #ffecd2, #fcb69f); color: transparent; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Avijit Jana</span>
-</h3>
+<div align="middle" style="background: linear-gradient(135deg, #82b0f1, #66a6ff); padding: 10px; border-radius: 8px;">
+    <h3 style="color: white; margin: 0;">Developed By - <span style="color: yellow;">Avijit Jana</span></h3>
+</div>
