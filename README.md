@@ -27,9 +27,9 @@ This is a step-by-step approach to understand the project :
 5) [Datasets](https://github.com/Avijit-Jana/Used-Car-Price-Prediction/tree/main/DataSets)
 
 ## Required libraries
-**Use this code to install this libraries:**
+**Install this Necessary Libraries By Using this code:**
 ```Bash
-pip install pandas numpy streamlit sklearn scipy ast pickle matplotlib seaborn
+pip install pandas numpy streamlit scikit-learn scipy matplotlib seaborn
 ```
 
 <div align="middle" style="background: linear-gradient(135deg, #82b0f1, #66a6ff); padding: 10px; border-radius: 8px;">
