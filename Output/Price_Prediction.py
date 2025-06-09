@@ -4,11 +4,26 @@ import pandas as pd
 import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 
+# Path to the car data excel file
+# Change 1: Corrected path for car_data.xlsx
+CAR_DATA_PATH = 'Data Preprocessing & Cleaning/car_data.xlsx'
+
+# Paths to the pickled model and preprocessors
+# Change 2: Corrected path for model.pkl
+MODEL_PATH = 'Model/model.pkl'
+# Change 3: Corrected path for label_encoder.pkl
+LABEL_ENCODER_PATH = 'Data Preprocessing & Cleaning/label_encoder.pkl'
+# Change 4: Corrected path for scaler.pkl
+SCALER_PATH = 'Model/scaler.pkl'
+
+# Path to the image file (if it's in the Output directory with the app)
+# Change 5: Corrected path for car.png assuming it's in the Output folder
+CAR_IMAGE_PATH = 'car.png' # Assuming car.png is moved to the 'Output' folder
 
 
 # Load the saved Random Forest model from the pickle file
 def load_model():
-    file = '../Model/model.pkl'
+    file = MODEL_PATH
     with open(file, 'rb') as f:
         model1 = pickle.load(f) 
     return model1
@@ -19,8 +34,8 @@ def predict_model(features,car_data):
     features_df = pd.DataFrame([features])  # Create a DataFrame from the features
 
     # Load pre-fitted label encoder and scaler object from the pickle files
-    label_file = '../Data Preprocessing & Cleaning/label_encoder.pkl'
-    scaler_file = '../Model/scaler.pkl'
+    label_file = LABEL_ENCODER_PATH
+    scaler_file = SCALER_PATH
     with open(label_file, 'rb') as f:
         label_encoder = pickle.load(f)
     with open(scaler_file, 'rb') as f1:
@@ -44,14 +59,14 @@ def predict_model(features,car_data):
 # main function
 def main():
     # Load the dataset
-    df = pd.read_excel('../Data Preprocessing & Cleaning/car_data.xlsx')
+    df = pd.read_excel(CAR_DATA_PATH)
 
     # Sidebar
     with st.sidebar:
         st.header('About:')
         st.write('This project leverages a machine learning model to predict the resale value of a car, offering users insights based on various vehicle features. By building a Streamlit app, we created an intuitive and interactive interface, allowing users to input details like model year, mileage, and other car specifics to receive an estimated resale price.')
         st.markdown('## -Developed by Avijit Jana')
-        st.image('../Output/car.png', width=250)
+        st.image(CAR_IMAGE_PATH, width=250)
 
     # Set the title of the web app
     st.header(':car: :orange[_CarDekho_] Resale Car Price Prediction :car:', divider="red")
