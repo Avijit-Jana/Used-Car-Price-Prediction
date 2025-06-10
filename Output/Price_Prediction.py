@@ -2,80 +2,80 @@ import pickle
 import numpy as np
 import pandas as pd
 import streamlit as st
+import requests
+from io import BytesIO
 from sklearn.preprocessing import LabelEncoder
 
-# Path to the car data excel file
-# Change 1: Corrected path for car_data.xlsx
-CAR_DATA_PATH = 'Data Preprocessing & Cleaning/car_data.xlsx'
+# URLs for the car data and model artifacts
+CAR_DATA_URL = 'https://raw.githubusercontent.com/Avijit-Jana/Used-Car-Price-Prediction/main/Data%20Preprocessing%20%26%20Cleaning/car_data.xlsx'
+MODEL_URL = 'https://raw.githubusercontent.com/Avijit-Jana/Used-Car-Price-Prediction/main/Model/model.pkl'
+LABEL_ENCODER_URL = 'https://raw.githubusercontent.com/Avijit-Jana/Used-Car-Price-Prediction/main/Data%20Preprocessing%20%26%20Cleaning/label_encoder.pkl'
+SCALER_URL = 'https://raw.githubusercontent.com/Avijit-Jana/Used-Car-Price-Prediction/main/Model/scaler.pkl'
+CAR_IMAGE_URL = 'https://raw.githubusercontent.com/Avijit-Jana/Used-Car-Price-Prediction/main/Output/car.png'
 
-# Paths to the pickled model and preprocessors
-# Change 2: Corrected path for model.pkl
-MODEL_PATH = 'Model/model.pkl'
-# Change 3: Corrected path for label_encoder.pkl
-LABEL_ENCODER_PATH = 'Data Preprocessing & Cleaning/label_encoder.pkl'
-# Change 4: Corrected path for scaler.pkl
-SCALER_PATH = 'Model/scaler.pkl'
+# Utility to load binary file from URL
+@st.cache_data
+def load_binary_from_url(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return BytesIO(response.content)
 
-# Path to the image file (if it's in the Output directory with the app)
-# Change 5: Corrected path for car.png assuming it's in the Output folder
-CAR_IMAGE_PATH = 'car.png' # Assuming car.png is moved to the 'Output' folder
-
-
-# Load the saved Random Forest model from the pickle file
+# Load the saved Random Forest model from the URL
+@st.cache_resource
 def load_model():
-    file = MODEL_PATH
-    with open(file, 'rb') as f:
-        model1 = pickle.load(f) 
-    return model1
+    bio = load_binary_from_url(MODEL_URL)
+    return pickle.load(bio)
+
+# Load label encoder and scaler from URLs
+@st.cache_resource
+def load_preprocessors():
+    enc_bio = load_binary_from_url(LABEL_ENCODER_URL)
+    scl_bio = load_binary_from_url(SCALER_URL)
+    label_encoder = pickle.load(enc_bio)
+    scaler = pickle.load(scl_bio)
+    return label_encoder, scaler
 
 # Function to predict using the Random Forest model
-def predict_model(features,car_data):
-    model_rf = load_model()                 # Load the model
-    features_df = pd.DataFrame([features])  # Create a DataFrame from the features
+def predict_model(features, car_data):
+    model_rf = load_model()
+    label_encoder, scaler = load_preprocessors()
+    features_df = pd.DataFrame([features])
 
-    # Load pre-fitted label encoder and scaler object from the pickle files
-    label_file = LABEL_ENCODER_PATH
-    scaler_file = SCALER_PATH
-    with open(label_file, 'rb') as f:
-        label_encoder = pickle.load(f)
-    with open(scaler_file, 'rb') as f1:
-        scaler = pickle.load(f1)
-    
-    # columns to encode
-    columns_to_encode = ['Fuel type','Body type','transmission','model','variantName','Insurance Validity','City'] 
-    
+    # Columns to encode
+    columns_to_encode = ['Fuel type', 'Body type', 'transmission',
+                         'model', 'variantName', 'Insurance Validity', 'City']
+
     for column in columns_to_encode:
-        label_encoder.fit(car_data[column])  # Fit the label encoder on the entire column data
-        features_df[column] = label_encoder.transform(features_df[column])  
-    
+        label_encoder.fit(car_data[column])
+        features_df[column] = label_encoder.transform(features_df[column])
+
     # Scale the features
-    features_df = scaler.transform(features_df)
+    features_scaled = scaler.transform(features_df)
     # Predict the price
-    prediction = model_rf.predict(features_df)  
-    # return the prediction
-    return prediction[0]
+    return model_rf.predict(features_scaled)[0]
 
-
-# main function
+# Main function
 def main():
-    # Load the dataset
-    df = pd.read_excel(CAR_DATA_PATH)
+    # Load the dataset from URL
+    try:
+        df = pd.read_excel(load_binary_from_url(CAR_DATA_URL))
+    except Exception as e:
+        st.error(f"Error loading data from URL: {e}")
+        return
 
     # Sidebar
     with st.sidebar:
         st.header('About:')
         st.write('This project leverages a machine learning model to predict the resale value of a car, offering users insights based on various vehicle features. By building a Streamlit app, we created an intuitive and interactive interface, allowing users to input details like model year, mileage, and other car specifics to receive an estimated resale price.')
         st.markdown('## -Developed by Avijit Jana')
-        st.image(CAR_IMAGE_PATH, width=250)
+        st.image(CAR_IMAGE_URL, width=250)
 
     # Set the title of the web app
     st.header(':car: :orange[_CarDekho_] Resale Car Price Prediction :car:', divider="red")
+    st.write('---')
 
-    # Create a form to take input from the user
+    # Layout for user inputs
     col1, col2, col3, col4, col5 = st.columns(5)
-
-    # Create columns for getting user input
-    # Section 1
     with col1:
         owner = int(st.selectbox('Owner number', df['ownerNo'].unique()))
         reg_year = int(st.selectbox('Registration Year', df['Registration Year'].unique()))
@@ -90,9 +90,8 @@ def main():
         torque = int(st.selectbox('Torque(Nm)', df['Torque(Nm)'].unique()))
     with col5:
         city = st.selectbox('City', df['City'].unique())
-        transmission = st.selectbox('transmission', df['transmission'].unique())
-    
-    # Section 2
+        transmission = st.selectbox('Transmission', df['transmission'].unique())
+
     col1, col2, col3 = st.columns(3)
     with col1:
         body = st.selectbox('Body Type', df['Body type'].unique())
@@ -101,14 +100,12 @@ def main():
     with col3:
         max_power = int(st.selectbox('Max Power(bhp)', df['Max Power(bhp)'].unique()))
 
-    # Section 3
     col1, col2 = st.columns(2)
     with col1:
         model_name = st.selectbox('Model Name', df['model'].unique())
     with col2:
         variant = st.selectbox('Variant Name', df['variantName'].unique())
 
-    # Dictionary for user inputs
     features = {
         'Fuel type': fuel,
         'Body type': body,
@@ -126,8 +123,7 @@ def main():
         'Torque(Nm)': torque,
         'City': city
     }
-    
-    # Inject CSS styles globally for the button
+
     st.markdown("""
         <style>
         .stButton > button {
@@ -135,16 +131,14 @@ def main():
             height: 50px;
             width: 200px;
             color: green;
-            # background-color: cyan;
             display: block;
             margin: auto;
         }
         </style>
         """, unsafe_allow_html=True)
 
-    # Button without inline HTML
     if st.button("# Predict Price"):
-        prediction = predict_model(features,df)
+        prediction = predict_model(features, df)
         st.markdown(f'## Resale Price of the Car: ₹ `{prediction:.2f}`')
 
 if __name__ == '__main__':
